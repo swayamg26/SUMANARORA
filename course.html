@@ -1,0 +1,52 @@
+<section id="courses">
+  <h2 class="text-center mb-4" style="color:#0a3d62;letter-spacing:1px;">Our Courses</h2>
+  <div class="courses-section-title">Upcoming Courses</div>
+  <div id="courses-upcoming" class="stay-tuned-box">Stay tuned for upcoming courses!</div>
+  <div class="courses-section-title">Completed Courses</div>
+  <div id="courses-list" class="courses-list-row">
+    <div class="course-card" onclick="showCourse(0)">
+      <img src="img.jpg" alt="Crystal Healing Course" />
+      <div class="desc"><b>Crystal Healing Webinar</b><br />Explore the healing power of crystals in our free webinar.</div>
+      <button class="know-btn" type="button">Know More</button>
+    </div>
+    <div class="course-card" onclick="showCourse(1)">
+      <img src="im.jpg" alt="Vastu & Relationships" />
+      <div class="desc"><b>Vastu & Relationships (Raksha Bandhan Special)</b><br />Deepen sibling bonds and harmony with Vastu and spiritual guidance.</div>
+      <button class="know-btn" type="button">Know More</button>
+    </div>
+    <div class="course-card" onclick="showCourse(2)">
+      <img src="img1.jpg" alt="Live Rudraksha & Shivling Q&A" />
+      <div class="desc"><b>Live Rudraksha & Shivling Q&A</b><br />Learn why jal is offered to Shivling and which rudraksha to use in Saawan.</div>
+      <button class="know-btn" type="button">Know More</button>
+    </div>
+    <div class="course-card" onclick="showCourse(3)">
+      <img src="img2.jpg" alt="Vastu 7 Day Course" />
+      <div class="desc"><b>Vastu 7 Day Course</b><br />Make your life better with Vastu principles in this special course.</div>
+      <button class="know-btn" type="button">Know More</button>
+    </div>
+  </div>
+  <div id="course-detail"></div>
+  <button onclick="showSection('home')" class="btn btn-outline-primary mt-5 mx-auto d-block px-4 py-2">⬅ Back to Home</button>
+</section>
+
+<section id="contact">
+  <h2 class="text-center mb-4" style="color:#0a3d62;letter-spacing:1px;">Contact Me</h2>
+  <div class="contact-icons mb-4 mt-3">
+    <a href="#" onclick="shareWebsite('https://instagram.com/')" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" onclick="shareWebsite('https://t.me/yourtelegramchannel')" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="#" onclick="shareWebsite('https://wa.me/919876543210')" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <form onsubmit="submitQuery(event)" style="max-width:400px; margin:auto;">
+    <div class="mb-3">
+      <input type="text" id="userName" class="form-control" placeholder="Your Name" required />
+    </div>
+    <div class="mb-3">
+      <input type="email" id="userEmail" class="form-control" placeholder="Your Email" required />
+    </div>
+    <div class="mb-3">
+      <textarea id="userMessage" class="form-control" placeholder="Your Message or Query" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+  </form>
+  <button onclick="showSection('home')" class="btn btn-outline-primary mt-4 mx-auto d-block px-4 py-2">⬅ Back to Home</button>
+</section>
