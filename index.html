@@ -3,312 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Suman Arora - Numerology & Courses</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
-  <style>
-    /* Paste all your original styles here exactly as in your main file */
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f7f6fb;
-      margin: 0;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 240px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: linear-gradient(180deg, #1e3a8a, #7dd3fc 95%);
-      color: #fff;
-      padding-top: 30px;
-      transform: translateX(-240px);
-      transition: transform 0.3s;
-      z-index: 2100;
-      box-shadow: 2px 0 14px #5da8e060;
-    }
-    .sidebar.open {
-      transform: translateX(0);
-    }
-    .sidebar a {
-      display: block;
-      padding: 12px 20px;
-      color: #f1fafc;
-      text-decoration: none;
-      font-size: 1.13rem;
-      border-radius: 7px;
-      transition: background 0.2s, color 0.14s;
-    }
-    .sidebar a:hover {
-      background: #ffe082;
-      color: #1e3a8a;
-      font-weight: 600;
-    }
-    .sidebar-toggle {
-      position: fixed;
-      top: 22px;
-      left: 16px;
-      background: #ffe082;
-      color: #1e3a8a;
-      font-size: 2rem;
-      border: none;
-      border-radius: 7px;
-      padding: 4.5px 14px 2.5px 14px;
-      z-index: 2200;
-      cursor: pointer;
-      box-shadow: 0 2px 12px #bab3eb1a;
-      transition: background 0.15s, color 0.15s;
-    }
-    .sidebar-toggle:hover {
-      background: #1e3a8a;
-      color: #ffe082;
-    }
-    .content {
-      padding: 28px 25px 0 25px;
-    }
-    section {
-      display: none;
-      margin-top: 22px;
-    }
-    section.active {
-      display: block;
-    }
-    .beautiful-bg {
-      background: linear-gradient(135deg, #e0edfc 55%, #fffbe7 100%);
-      min-height: 86vh;
-      border-radius: 26px;
-      box-shadow: 0 8px 44px #90caf915, 0 1px 0 #ffeaa036;
-      padding: 62px 24px 53px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .welcome-message {
-      color: #1e3a8a;
-      font-size: 2.08rem;
-      font-weight: 800;
-      margin-bottom: 13px;
-      letter-spacing: 1.2px;
-      text-shadow: 0 4px 10px #7dd3fc20;
-      text-align: center;
-    }
-    .suman-arora-sign {
-      color: #ffb62a;
-      font-weight: 900;
-      font-size: 2.03rem;
-      letter-spacing: 2px;
-      font-family: 'Pacifico', cursive, system-ui;
-      margin-bottom: 18px;
-      text-shadow: 0 6px 14px #ffe08244, 0 0px 0 #fff6e2;
-    }
-    .numerology-thoughts {
-      color: #2c4562;
-      font-size: 1.19rem;
-      max-width: 650px;
-      background: #fff8e0ea;
-      box-shadow: 0 3px 12px #66a9eb16;
-      padding: 18px 30px;
-      border-radius: 18px;
-      margin: 0 auto 32px auto;
-      line-height: 1.55;
-      text-align: center;
-      font-family: 'Georgia', serif;
-      border-left: 5px solid #1e3a8a44;
-    }
-    .row-home-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 23px;
-      justify-content: center;
-      margin-top: 34px;
-    }
-    .register-btn {
-      background: #1e3a8a;
-      color: #fff;
-      font-size: 1.13rem;
-      font-weight: 700;
-      padding: 15px 38px;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px #7dd3fc25;
-      letter-spacing: 1.1px;
-      outline: none;
-      transition: background 0.17s, color 0.15s, transform 0.19s;
-    }
-    .register-btn:hover,
-    .sign-in-btn:hover {
-      background: #3f51b5;
-      color: #ffe082;
-      transform: translateY(-2px) scale(1.04);
-    }
-    .sign-in-btn {
-      background: #ffe082;
-      color: #3f51b5;
-      font-size: 1.13rem;
-      font-weight: 700;
-      padding: 15px 38px;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px #b9a9ff18;
-      letter-spacing: 1.03px;
-      outline: none;
-      transition: background 0.17s, color 0.13s, transform 0.12s;
-    }
-    footer {
-      text-align: center;
-      padding: 18px;
-      margin-top: 36px;
-      background: linear-gradient(90deg, #1e3a8a 75%, #ffe082 120%);
-      color: white;
-      border-radius: 17px;
-      letter-spacing: 1px;
-      font-size: 1.07rem;
-    }
-    /* Add remaining CSS if needed from your original file */
-  </style>
+  <title>Suman Arora - Astrology & Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link href="d.css" rel="stylesheet" />
 </head>
 <body>
-  <!-- Sidebar -->
   <div class="sidebar" id="sidebarMenu">
-    <a href="#" onclick="showSection('home');closeSidebar()">Home</a>
-    <a href="#" onclick="showSection('courses');closeSidebar()">Courses</a>
-    <a href="#" onclick="showSection('contact');closeSidebar()">Contact</a>
-    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="closeSidebar()">Sign In</a>
+    <a href="#" onclick="showSection('home');closeSidebar()" id="home-link">Home</a>
+    <div class="sidebar-links">
+      <a href="#" onclick="showSection('courses');closeSidebar()">Courses</a>
+      <a href="#" onclick="showSection('contact');closeSidebar()">Contact</a>
+    </div>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="closeSidebar()" style="margin-top:auto;">Log In</a>
   </div>
-  <!-- Sidebar Toggle -->
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
     <i class="fas fa-bars"></i>
   </button>
-
   <div class="content" id="mainContent">
-    <!-- Home Section -->
     <section id="home" class="active">
       <div class="beautiful-bg">
-        <div class="welcome-message">
-          Welcome! Embrace the Journey of Self-Discovery
-        </div>
+        <img src="Gemini_Generated_Image_hyb3i4hyb3i4hyb3.jpg" alt="Astrology Background" class="astrology-img-bg" />
+        <div class="welcome-message">Welcome! Embrace the Journey of Self-Discovery</div>
         <div class="suman-arora-sign">Suman Arora</div>
         <div class="numerology-thoughts">
-          <b>“Numerology is a gentle whisper from the universe, helping you see your purpose, potential, and the rhythm of your destiny.”</b>
+          <b>“Astrology is a cosmic map showing your personality, potential, and purpose.”</b>
           <br /><br />
-          Life is full of patterns and hidden harmonies. Through the wisdom of numbers, let’s uncover the unique keys to your happiness, prosperity, and spiritual growth.
+          Life is full of stars and planetary rhythms. Through the wisdom of astrology, discover the unique keys to your happiness, prosperity, and spiritual growth.
         </div>
         <div class="row-home-btns">
           <button class="register-btn" onclick="registerNow()">Register Now &amp; Get Notified</button>
-          <button class="sign-in-btn" onclick="signInModal()">Sign In</button>
+          <button class="sign-in-btn" onclick="signInModal()">Log In</button>
         </div>
       </div>
       <footer id="footer-home">&copy; 2025 Suman Arora. All rights reserved.</footer>
     </section>
 
-    <!-- Empty containers for other pages' content -->
+    <!-- Placeholder sections for courses and contact -->
     <section id="courses"></section>
     <section id="contact"></section>
   </div>
 
-  <!-- Login/Sign In Modal -->
+  <!-- Login Modal and Scripts -->
   <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Sign In / Register</h5>
+          <h5 class="modal-title">Log In / Register</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        <form
-          onsubmit="event.preventDefault();registerNow();"
-        >
+        <form onsubmit="handleLogin(event)">
           <div class="modal-body">
-            <input
-              type="email"
-              class="form-control mb-3"
-              placeholder="Email"
-              required
-            />
-            <input
-              type="password"
-              class="form-control mb-3"
-              placeholder="Password"
-              required
-            />
-            <div class="form-text">
-              To get notified about new courses/recordings, please register!
-            </div>
+            <input type="email" id="loginEmail" class="form-control mb-3" placeholder="Email" required />
+            <input type="password" class="form-control mb-3" placeholder="Password" required />
+            <div class="form-text">To get notified about new courses/recordings, please register!</div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">
-              Register / Sign In
-            </button>
+            <button type="submit" class="btn btn-primary">Register / Log In</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Sidebar toggle functions
-    function toggleSidebar() {
-      document.getElementById('sidebarMenu').classList.toggle('open');
-    }
-    function closeSidebar() {
-      document.getElementById('sidebarMenu').classList.remove('open');
-    }
-    // Modals
-    function signInModal() {
-      const m = new bootstrap.Modal(document.getElementById('loginModal'));
-      m.show();
-    }
-    function registerNow() {
-      alert(
-        'Thank you for registering! You will be notified about new courses and updates.'
-      );
-      const m = bootstrap.Modal.getInstance(
-        document.getElementById('loginModal')
-      );
-      if (m) m.hide();
-    }
-
-    // Dynamic content loader for Courses and Contact sections
-    function loadSection(sectionId, fileName) {
-      fetch(fileName)
-        .then((resp) => resp.text())
-        .then((html) => {
-          document.getElementById(sectionId).innerHTML = html;
-        });
-    }
-
-    // Switch visible section
-    function showSection(sectionId) {
-      document.querySelectorAll('section').forEach((s) => {
-        s.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-      if (
-        (sectionId === 'courses' &&
-          !document.getElementById('courses').innerHTML.trim()) ||
-        (sectionId === 'contact' &&
-          !document.getElementById('contact').innerHTML.trim())
-      ) {
-        loadSection(sectionId, sectionId + '.html');
-      }
-      closeSidebar();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      showSection('home');
-      closeSidebar();
-    });
-  </script>
+  <script src="course.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
