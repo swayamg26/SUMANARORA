@@ -6,7 +6,210 @@
   <title>Suman Arora - Astrology & Courses</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link href="d.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e7f0fd 50%, #f3eafc 100%);
+      color: #3b3a5f;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .sidebar {
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 240px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
+      color: #3b3a5f;
+      transition: transform 0.3s;
+      box-shadow: 2px 0 14px #9ba7b455;
+      z-index: 2100;
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    .sidebar-links {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #3b3a5f;
+      text-decoration: none;
+      font-size: 1.13rem;
+      border-radius: 7px;
+      transition: background 0.2s, color 0.14s;
+    }
+    .sidebar a:hover {
+      background: #f7d488;
+      color: #3b3a5f;
+      font-weight: 700;
+    }
+    .sidebar a:last-child {
+      margin-top: auto;
+    }
+    .sidebar-toggle {
+      position: fixed;
+      top: 22px;
+      left: 16px;
+      background: #f7d488;
+      color: #3b3a5f;
+      font-size: 2rem;
+      border: none;
+      border-radius: 7px;
+      padding: 4.5px 14px 2.5px 14px;
+      z-index: 2200;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #9ba7b455;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sidebar-toggle:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+    }
+    .content {
+      padding: 28px 25px 0 25px;
+      margin-left: 240px;
+    }
+    section {
+      display: none;
+      margin-top: 0;
+    }
+    section.active {
+      display: block;
+    }
+    .beautiful-bg {
+      position: relative;
+      min-height: 86vh;
+      border-radius: 26px;
+      box-shadow: 0 8px 44px #b1bce8cc;
+      padding: 62px 40px 53px 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+      overflow: hidden;
+      color: #3b3a5f;
+      background: linear-gradient(135deg, #e7f0fddd 55%, #f3eafcd9 100%), url('do.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .profile-photo {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 16px rgba(177, 139, 255, 0.4);
+      flex-shrink: 0;
+      animation: floatUpDown 6s ease-in-out infinite;
+      z-index: 1;
+      border: 3px solid #b18aff; /* Add border for visibility */
+      background-color: #fff; /* Ensure background if transparent */
+    }
+    .text-content {
+      flex: 1;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .suman-arora-sign {
+      position: relative;
+      animation: floatUpDown 6s ease-in-out infinite;
+      color: #b18aff;
+      font-weight: 900;
+      font-size: 2.03rem;
+      letter-spacing: 2px;
+      font-family: 'Pacifico', cursive, system-ui;
+      margin-bottom: 18px;
+      text-shadow: 0 6px 14px #b18affcc;
+      z-index: 1;
+    }
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .welcome-message {
+      font-size: 2.08rem;
+      font-weight: 800;
+      margin-bottom: 13px;
+      letter-spacing: 1.2px;
+      text-align: center;
+      z-index: 1;
+      text-shadow: 0 2px 4px #f7d488cc;
+    }
+    .numerology-thoughts {
+      font-size: 1.19rem;
+      max-width: 650px;
+      background: rgba(235, 230, 255, 0.75);
+      box-shadow: 0 3px 12px #b18aff70;
+      padding: 18px 30px;
+      border-radius: 18px;
+      margin: 0 auto 32px auto;
+      line-height: 1.55;
+      text-align: center;
+      font-family: 'Georgia', serif;
+      border-left: 5px solid #f7d488cc;
+      color: #3b3a5f;
+      z-index: 1;
+    }
+    .row-home-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+      justify-content: center;
+      margin-top: 34px;
+      z-index: 1;
+    }
+    .register-btn {
+      background: #f7d488;
+      color: #3b3a5f;
+      font-size: 1.13rem;
+      font-weight: 700;
+      padding: 15px 38px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 14px #c2b06a;
+      letter-spacing: 1.1px;
+      transition: background 0.17s, color 0.15s, transform 0.19s;
+      cursor: pointer;
+    }
+    .sign-in-btn {
+      background: #b18aff;
+      color: #3b3a5f;
+      font-size: 1.13rem;
+      font-weight: 700;
+      padding: 15px 38px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 14px #8863ff;
+      letter-spacing: 1.03px;
+      transition: background 0.17s, color 0.13s, transform 0.12s;
+      cursor: pointer;
+    }
+    .register-btn:hover,
+    .sign-in-btn:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px) scale(1.04);
+    }
+    footer {
+      text-align: center;
+      padding: 18px;
+      margin-top: 36px;
+      background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
+      color: #3b3a5f;
+      border-radius: 17px;
+      letter-spacing: 1px;
+      font-size: 1.07rem;
+    }
+  </style>
 </head>
 <body>
   <div class="sidebar" id="sidebarMenu">
@@ -17,61 +220,101 @@
     </div>
     <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="closeSidebar()" style="margin-top:auto;">Log In</a>
   </div>
+
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
     <i class="fas fa-bars"></i>
   </button>
+
   <div class="content" id="mainContent">
-    <!-- Home Section -->
     <section id="home" class="active">
-      <!-- Your existing home content here -->
+      <div class="beautiful-bg">
+        <img src="1.jpg" alt="Suman Arora" class="profile-photo" />
+        <div class="text-content">
+          <div class="welcome-message">Welcome! Embrace the Journey of Self-Discovery</div>
+          <div class="suman-arora-sign">Suman Arora</div>
+          <div class="numerology-thoughts">
+            <b>“Astrology is a cosmic map showing your personality, potential, and purpose.”</b>
+            <br /><br />
+            Life is full of stars and planetary rhythms. Through the wisdom of astrology, discover the unique keys to your happiness, prosperity, and spiritual growth.
+          </div>
+          <div class="row-home-btns">
+            <button class="register-btn" onclick="registerNow()">Register Now &amp; Get Notified</button>
+            <button class="sign-in-btn" onclick="signInModal()">Log In</button>
+          </div>
+        </div>
+      </div>
+      <footer id="footer-home">&copy; 2025 Suman Arora. All rights reserved.</footer>
     </section>
 
-    <!-- Courses Section (will be loaded dynamically) -->
     <section id="courses"></section>
-
-    <!-- Contact Section (will be loaded dynamically) -->
     <section id="contact"></section>
   </div>
 
-  <!-- Login Modal and necessary scripts -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form onsubmit="handleLogin(event)">
+          <div class="modal-header">
+            <h5 class="modal-title">Log In / Register</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="email" id="loginEmail" class="form-control mb-3" placeholder="Email" required />
+            <input type="password" class="form-control" placeholder="Password" required />
+            <div class="form-text">To get notified about new courses/recordings, please register!</div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Register / Log In</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Function to load external HTML into a section
-    function loadSectionContent(sectionId, fileName) {
-      fetch(fileName)
-        .then(response => {
-          if (!response.ok) throw new Error(`Failed to load ${fileName}`);
-          return response.text();
-        })
-        .then(html => {
-          document.getElementById(sectionId).innerHTML = html;
-        })
-        .catch(error => {
-          console.error(error);
-          document.getElementById(sectionId).innerHTML = `<p>Failed to load content.</p>`;
-        });
+    function toggleSidebar() { document.getElementById('sidebarMenu').classList.toggle('open'); }
+    function closeSidebar() { document.getElementById('sidebarMenu').classList.remove('open'); }
+    function signInModal() { new bootstrap.Modal(document.getElementById('loginModal')).show(); }
+    function registerNow() {
+      alert("Thank you for registering! You will be notified about new courses and updates.");
+      let modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+      if (modal) modal.hide();
     }
-
-    // Show selected section and load content dynamically if needed
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      if(email) {
+        localStorage.setItem('loggedEmail', email);
+        alert('Welcome, ' + email);
+        let modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        if(modal) modal.hide();
+      } else {
+        alert('Please enter a valid email.');
+      }
+    }
+    function loadContent(sectionId, fileName) {
+      fetch(fileName)
+        .then(res => { if(!res.ok) throw new Error(`Failed to load ${fileName}`); return res.text(); })
+        .then(html => { document.getElementById(sectionId).innerHTML = html; })
+        .catch(err => { console.error(err); document.getElementById(sectionId).innerHTML = `<p>Failed to load content.</p>`; });
+    }
     function showSection(id) {
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-
-      if (id === 'courses' && !document.getElementById('courses').innerHTML.trim()){
-        loadSectionContent('courses', 'course.html');
-      } 
-      else if (id === 'contact' && !document.getElementById('contact').innerHTML.trim()){
-        loadSectionContent('contact', 'contact.html');
-      }
-
-      // Handle footer visibility if needed
-      var footer = document.getElementById('footer-home');
+      if(id === 'courses' && !document.getElementById('courses').innerHTML.trim()) loadContent('courses', 'course.html');
+      if(id === 'contact' && !document.getElementById('contact').innerHTML.trim()) loadContent('contact', 'contact.html');
+      const footer = document.getElementById('footer-home');
       if(footer) footer.style.display = id === 'home' ? 'block' : 'none';
-
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       closeSidebar();
     }
+    document.addEventListener('DOMContentLoaded', () => { showSection('home'); closeSidebar(); });
+    document.addEventListener('click', e => {
+      const sidebar = document.getElementById('sidebarMenu');
+      const toggle = document.querySelector('.sidebar-toggle');
+      if(sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggle.contains(e.target)) closeSidebar();
+    });
   </script>
 </body>
 </html>
