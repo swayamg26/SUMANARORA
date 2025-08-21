@@ -213,12 +213,20 @@
 
   <script>
     function showDetail(id) {
+      console.log('Showing detail for:', id);
       document.getElementById('coursesList').style.display = 'none';
       document.querySelectorAll('.course-detail').forEach(div => div.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
+      const detail = document.getElementById(id);
+      if (detail) {
+        detail.style.display = 'block';
+      } else {
+        console.warn('No detail section found for id:', id);
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
     function backToCourses() {
+      console.log('Back to courses clicked');
       document.getElementById('coursesList').style.display = 'grid';
       document.querySelectorAll('.course-detail').forEach(div => div.style.display = 'none');
       window.scrollTo({ top: 0, behavior: 'smooth' });
