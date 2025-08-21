@@ -1,52 +1,229 @@
-<section id="courses">
-  <h2 class="text-center mb-4" style="color:#0a3d62;letter-spacing:1px;">Our Courses</h2>
-  <div class="courses-section-title">Upcoming Courses</div>
-  <div id="courses-upcoming" class="stay-tuned-box">Stay tuned for upcoming courses!</div>
-  <div class="courses-section-title">Completed Courses</div>
-  <div id="courses-list" class="courses-list-row">
-    <div class="course-card" onclick="showCourse(0)">
-      <img src="img.jpg" alt="Crystal Healing Course" />
-      <div class="desc"><b>Crystal Healing Webinar</b><br />Explore the healing power of crystals in our free webinar.</div>
-      <button class="know-btn" type="button">Know More</button>
-    </div>
-    <div class="course-card" onclick="showCourse(1)">
-      <img src="im.jpg" alt="Vastu & Relationships" />
-      <div class="desc"><b>Vastu & Relationships (Raksha Bandhan Special)</b><br />Deepen sibling bonds and harmony with Vastu and spiritual guidance.</div>
-      <button class="know-btn" type="button">Know More</button>
-    </div>
-    <div class="course-card" onclick="showCourse(2)">
-      <img src="img1.jpg" alt="Live Rudraksha & Shivling Q&A" />
-      <div class="desc"><b>Live Rudraksha & Shivling Q&A</b><br />Learn why jal is offered to Shivling and which rudraksha to use in Saawan.</div>
-      <button class="know-btn" type="button">Know More</button>
-    </div>
-    <div class="course-card" onclick="showCourse(3)">
-      <img src="img2.jpg" alt="Vastu 7 Day Course" />
-      <div class="desc"><b>Vastu 7 Day Course</b><br />Make your life better with Vastu principles in this special course.</div>
-      <button class="know-btn" type="button">Know More</button>
-    </div>
-  </div>
-  <div id="course-detail"></div>
-  <button onclick="showSection('home')" class="btn btn-outline-primary mt-5 mx-auto d-block px-4 py-2">⬅ Back to Home</button>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Courses - Suman Arora</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e7f0fd 50%, #f3eafc 100%);
+      color: #3b3a5f;
+      margin: 0;
+      min-height: 100vh;
+      padding: 40px 15px;
+    }
+    .courses-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    @media (max-width: 1200px) {
+      .courses-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 900px) {
+      .courses-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .courses-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .course-card {
+      background: rgba(235, 230, 255, 0.85);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #b18aff55;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatUpDown 6s ease-in-out infinite;
+    }
+    .course-card:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 28px #8863ffbb;
+    }
+    .course-img {
+      width: 100%;
+      height: 180px;
+      border-radius: 15px;
+      object-fit: cover;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px #b18aff88;
+    }
+    .course-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #6a4fff;
+      text-align: center;
+    }
+    .course-description {
+      font-size: 1.05rem;
+      font-family: Georgia, serif;
+      margin-bottom: 26px;
+      color: #3b3a5f;
+      text-align: center;
+      min-height: 100px;
+    }
+    .btn-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .knowmore-btn, .back-btn {
+      background: #b18aff;
+      color: #3b3a5f;
+      border: none;
+      border-radius: 15px;
+      padding: 12px 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 14px #8863ff;
+      transition: background 0.3s ease, color 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .knowmore-btn:hover, .back-btn:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px) scale(1.05);
+      text-decoration: none;
+    }
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .course-detail {
+      display: none;
+      max-width: 980px;
+      margin: 40px auto 0;
+      padding: 20px 30px;
+      background: rgba(235,230,255,0.85);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #b18aff55;
+      font-family: Georgia, serif;
+      color: #3b3a5f;
+    }
+    .course-detail h2 {
+      color: #6a4fff;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .course-detail p {
+      font-size: 1.12rem;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
 
-<section id="contact">
-  <h2 class="text-center mb-4" style="color:#0a3d62;letter-spacing:1px;">Contact Me</h2>
-  <div class="contact-icons mb-4 mt-3">
-    <a href="#" onclick="shareWebsite('https://instagram.com/')" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="#" onclick="shareWebsite('https://t.me/yourtelegramchannel')" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-    <a href="#" onclick="shareWebsite('https://wa.me/919876543210')" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <div class="courses-container" id="coursesList">
+    <div class="course-card">
+      <img src="im.jpg" alt="Live Rudraksha & Shivling Session" class="course-img" />
+      <div class="course-title">Live Rudraksha & Shivling Session</div>
+      <div class="course-description">
+        Why offer water on Shivling? Which Rudraksha to use in Sawan? Free live Zoom session on 26th July 2025 at 9 PM.
+      </div>
+      <div class="btn-container">
+        <button class="knowmore-btn" onclick="showDetail('rudraksha')">Know More</button>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="img1.jpg" alt="Vastu 7 Day Course" class="course-img" />
+      <div class="course-title">Vastu 7 Day Course</div>
+      <div class="course-description">
+        Enhance your life with Vastu principles in this 7-day course starting 5th August 2025 at 9 PM.
+      </div>
+      <div class="btn-container">
+        <button class="knowmore-btn" onclick="showDetail('vastu')">Know More</button>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="img2.jpg" alt="Crystal Healing Webinar" class="course-img" />
+      <div class="course-title">Crystal Healing Webinar</div>
+      <div class="course-description">
+        Discover the healing power of crystals in this free webinar on 5th August 2025 at 3:30 PM.
+      </div>
+      <div class="btn-container">
+        <button class="knowmore-btn" onclick="showDetail('crystal')">Know More</button>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="img.jpg" alt="Special Raksha Bandhan Message" class="course-img" />
+      <div class="course-title">Special Raksha Bandhan Message</div>
+      <div class="course-description">
+        A heartfelt message celebrating the bond of siblings on Raksha Bandhan.
+      </div>
+      <div class="btn-container">
+        <button class="knowmore-btn" onclick="showDetail('raksha')">Know More</button>
+      </div>
+    </div>
   </div>
-  <form onsubmit="submitQuery(event)" style="max-width:400px; margin:auto;">
-    <div class="mb-3">
-      <input type="text" id="userName" class="form-control" placeholder="Your Name" required />
-    </div>
-    <div class="mb-3">
-      <input type="email" id="userEmail" class="form-control" placeholder="Your Email" required />
-    </div>
-    <div class="mb-3">
-      <textarea id="userMessage" class="form-control" placeholder="Your Message or Query" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary w-100">Send Message</button>
-  </form>
-  <button onclick="showSection('home')" class="btn btn-outline-primary mt-4 mx-auto d-block px-4 py-2">⬅ Back to Home</button>
-</section>
+
+  <!-- Course Details -->
+  <div class="course-detail" id="rudraksha">
+    <h2>Live Rudraksha & Shivling Session</h2>
+    <p>Join a free live Zoom session hosted by Suman Arora where you will learn why devotees offer water on Shivling and which Rudraksha to use in the month of Sawan.</p>
+    <p><strong>Date & Time:</strong> 26th July 2025, 9:00 PM</p>
+    <p><strong>Zoom Meeting ID:</strong> 811 7433 983</p>
+    <p><strong>Password:</strong> 153953</p>
+    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
+  </div>
+
+  <div class="course-detail" id="vastu">
+    <h2>Vastu 7 Day Course</h2>
+    <p>This 7-day comprehensive course teaches the principles of Vastu Shastra to improve your home and life energy.</p>
+    <p><strong>Schedule:</strong> Tuesday, 5th August 2025 from 9:00 PM to 10:00 PM</p>
+    <p><strong>Contact:</strong> Suman Arora at 9115731550 for payments via GPay, PhonePe, or Paytm.</p>
+    <p><strong>Energy Exchange:</strong> 3500</p>
+    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
+  </div>
+
+  <div class="course-detail" id="crystal">
+    <h2>Crystal Healing Webinar</h2>
+    <p>Explore the healing energies of crystals with experts Suman Arora and Gurjeet Kaur.</p>
+    <p><strong>Date & Time:</strong> 5th August 2025 at 3:30 PM</p>
+    <p>This free webinar introduces crystal healing techniques and their benefits.</p>
+    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
+  </div>
+
+  <div class="course-detail" id="raksha">
+    <h2>Special Raksha Bandhan Message</h2>
+    <p>Celebrate Raksha Bandhan with a special message from Suman Arora reminding us to cherish and strengthen sibling bonds with love, protection, and trust.</p>
+    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
+  </div>
+
+  <script>
+    function showDetail(id) {
+      document.getElementById('coursesList').style.display = 'none';
+      document.querySelectorAll('.course-detail').forEach(div => div.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function backToCourses() {
+      document.getElementById('coursesList').style.display = 'grid';
+      document.querySelectorAll('.course-detail').forEach(div => div.style.display = 'none');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
