@@ -13,7 +13,10 @@
       color: #3b3a5f;
       margin: 0;
       min-height: 100vh;
+      overflow-x: hidden;
     }
+
+    /* Sidebar */
     .sidebar {
       padding-top: 80px;
       display: flex;
@@ -25,8 +28,9 @@
       left: 0;
       background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
       color: #3b3a5f;
-      transition: transform 0.3s;
       box-shadow: 2px 0 14px #9ba7b455;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
       z-index: 2100;
     }
     .sidebar.open {
@@ -54,6 +58,8 @@
     .sidebar a:last-child {
       margin-top: auto;
     }
+
+    /* Sidebar Toggle */
     .sidebar-toggle {
       position: fixed;
       top: 22px;
@@ -73,10 +79,26 @@
       background: #3b3a5f;
       color: #f7d488;
     }
+
+    /* Content */
     .content {
       padding: 28px 25px 0 25px;
       margin-left: 240px;
+      transition: margin-left 0.3s ease;
     }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 70vw;
+        max-width: 280px;
+      }
+      .content {
+        margin-left: 0;
+      }
+    }
+
+    /* Section Styling */
     section {
       display: none;
       margin-top: 0;
@@ -84,6 +106,9 @@
     section.active {
       display: block;
     }
+
+    /* Other styles remain as your current theme (profile photo, texts, buttons etc.) */
+
     .beautiful-bg {
       position: relative;
       min-height: 86vh;
@@ -110,8 +135,8 @@
       flex-shrink: 0;
       animation: floatUpDown 6s ease-in-out infinite;
       z-index: 1;
-      border: 3px solid #b18aff; /* Add border for visibility */
-      background-color: #fff; /* Ensure background if transparent */
+      border: 3px solid #b18aff;
+      background-color: #fff;
     }
     .text-content {
       flex: 1;
@@ -212,7 +237,7 @@
   </style>
 </head>
 <body>
-  <div class="sidebar" id="sidebarMenu">
+  <div class="sidebar" id="sidebarMenu" aria-label="Sidebar navigation">
     <a href="#" onclick="showSection('home');closeSidebar()" id="home-link">Home</a>
     <div class="sidebar-links">
       <a href="#" onclick="showSection('courses');closeSidebar()">Courses</a>
@@ -221,12 +246,12 @@
     <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="closeSidebar()" style="margin-top:auto;">Log In</a>
   </div>
 
-  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+  <button class="sidebar-toggle" aria-label="Toggle sidebar" onclick="toggleSidebar()">
     <i class="fas fa-bars"></i>
   </button>
 
   <div class="content" id="mainContent">
-    <section id="home" class="active">
+    <section id="home" class="active" tabindex="-1">
       <div class="beautiful-bg">
         <img src="1.jpg" alt="Suman Arora" class="profile-photo" />
         <div class="text-content">
@@ -234,7 +259,7 @@
           <div class="suman-arora-sign">Suman Arora</div>
           <div class="numerology-thoughts">
             <b>“Astrology is a cosmic map showing your personality, potential, and purpose.”</b>
-            <br /><br />
+
             Life is full of stars and planetary rhythms. Through the wisdom of astrology, discover the unique keys to your happiness, prosperity, and spiritual growth.
           </div>
           <div class="row-home-btns">
@@ -246,21 +271,22 @@
       <footer id="footer-home">&copy; 2025 Suman Arora. All rights reserved.</footer>
     </section>
 
-    <section id="courses"></section>
-    <section id="contact"></section>
+    <section id="courses" tabindex="-1"></section>
+    <section id="contact" tabindex="-1"></section>
   </div>
 
-  <div class="modal fade" id="loginModal" tabindex="-1">
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <form onsubmit="handleLogin(event)">
           <div class="modal-header">
-            <h5 class="modal-title">Log In / Register</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <h5 class="modal-title" id="loginModalLabel">Log In / Register</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <input type="email" id="loginEmail" class="form-control mb-3" placeholder="Email" required />
-            <input type="password" class="form-control" placeholder="Password" required />
+            <input type="email" id="loginEmail" class="form-control mb-3" placeholder="Email" required aria-required="true" />
+            <input type="password" class="form-control" placeholder="Password" required aria-required="true" />
             <div class="form-text">To get notified about new courses/recordings, please register!</div>
           </div>
           <div class="modal-footer">
@@ -273,9 +299,15 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function toggleSidebar() { document.getElementById('sidebarMenu').classList.toggle('open'); }
-    function closeSidebar() { document.getElementById('sidebarMenu').classList.remove('open'); }
-    function signInModal() { new bootstrap.Modal(document.getElementById('loginModal')).show(); }
+    function toggleSidebar() {
+      document.getElementById('sidebarMenu').classList.toggle('open');
+    }
+    function closeSidebar() {
+      document.getElementById('sidebarMenu').classList.remove('open');
+    }
+    function signInModal() {
+      new bootstrap.Modal(document.getElementById('loginModal')).show();
+    }
     function registerNow() {
       alert("Thank you for registering! You will be notified about new courses and updates.");
       let modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
@@ -301,19 +333,26 @@
     }
     function showSection(id) {
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      if(id === 'courses' && !document.getElementById('courses').innerHTML.trim()) loadContent('courses', 'course.html');
-      if(id === 'contact' && !document.getElementById('contact').innerHTML.trim()) loadContent('contact', 'contact.html');
+      const section = document.getElementById(id);
+      section.classList.add('active');
+      section.focus();
+      if(id === 'courses' && !section.innerHTML.trim()) loadContent('courses', 'course.html');
+      if(id === 'contact' && !section.innerHTML.trim()) loadContent('contact', 'contact.html');
       const footer = document.getElementById('footer-home');
       if(footer) footer.style.display = id === 'home' ? 'block' : 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       closeSidebar();
     }
-    document.addEventListener('DOMContentLoaded', () => { showSection('home'); closeSidebar(); });
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('home');
+      closeSidebar();
+    });
     document.addEventListener('click', e => {
       const sidebar = document.getElementById('sidebarMenu');
       const toggle = document.querySelector('.sidebar-toggle');
-      if(sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggle.contains(e.target)) closeSidebar();
+      if(sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        closeSidebar();
+      }
     });
   </script>
 </body>
