@@ -111,9 +111,9 @@
         height: 140px;
         max-width: 140px;
         min-width: 100px;
-        border-radius: 50%; /* Ensure circular shape */
-        aspect-ratio: 1 / 1; /* Force 1:1 ratio */
-        object-fit: cover;
+        border-radius: 50% !important;
+        aspect-ratio: 1 / 1 !important;
+        object-fit: cover !important;
       }
       .beautiful-bg {
         flex-direction: column;
@@ -159,9 +159,9 @@
         width: 90px;
         height: 90px;
         max-width: 90px;
-        border-radius: 50%; /* Ensure circular shape */
-        aspect-ratio: 1 / 1; /* Force 1:1 ratio */
-        object-fit: cover;
+        border-radius: 50% !important;
+        aspect-ratio: 1 / 1 !important;
+        object-fit: cover !important;
       }
       .beautiful-bg {
         padding: 8px 2px 8px 2px;
@@ -201,8 +201,9 @@
     .profile-photo {
       width: 280px;
       height: 280px;
-      border-radius: 50%;
-      object-fit: cover;
+      border-radius: 50% !important;
+      aspect-ratio: 1 / 1 !important;
+      object-fit: cover !important;
       box-shadow: 0 6px 16px rgba(177, 139, 255, 0.4);
       flex-shrink: 0;
       animation: floatUpDown 6s ease-in-out infinite;
@@ -326,16 +327,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#" onclick="showSection('home')">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="course.html" onclick="showSection('courses')">Courses</a>
+            <a class="nav-link" href="course.html">Courses</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html" onclick="showSection('contact')">Contact</a>
+            <a class="nav-link" href="contact.html">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recordings.html" onclick="showSection('recordings')">Recordings</a>
+            <a class="nav-link" href="recordings.html">Recordings</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.html">Log In</a>
