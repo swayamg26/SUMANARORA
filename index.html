@@ -48,7 +48,7 @@
 
     /* Content */
     .content {
-      padding: 0 25px 28px 25px;
+      padding: 28px 25px 0 25px;
       margin-left: 0;
       transition: margin-left 0.3s ease;
     }
@@ -83,19 +83,37 @@
 
     /* Responsive Adjustments */
     @media (max-width: 768px) {
-      /* Remove sidebar-like navbar styles for mobile */
+      .navbar-custom {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        max-width: none;
+        background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
+        box-shadow: 2px 0 14px rgba(0,0,0,0.3);
+        z-index: 3000;
+        padding-top: 60px;
+      }
       .content {
         margin-left: 0 !important;
         padding: 10px;
       }
       .navbar-toggler {
-        font-size: 1.5rem; /* Revert to a more standard size */
-        padding: 6px 14px;
+        font-size: 2.5rem;
+        padding: 8px 18px;
+        z-index: 3100;
+        top: 12px;
+        left: 12px;
       }
       .profile-photo {
         width: 140px;
+        height: 140px;
         max-width: 140px;
-        height: auto; /* Let aspect-ratio handle height */
+        min-width: 100px;
+        border-radius: 50%; /* Ensure circular shape */
+        aspect-ratio: 1 / 1; /* Force 1:1 ratio */
+        object-fit: cover;
       }
       .beautiful-bg {
         flex-direction: column;
@@ -139,8 +157,11 @@
     @media (max-width: 480px) {
       .profile-photo {
         width: 90px;
+        height: 90px;
         max-width: 90px;
-        height: auto; /* Let aspect-ratio handle height */
+        border-radius: 50%; /* Ensure circular shape */
+        aspect-ratio: 1 / 1; /* Force 1:1 ratio */
+        object-fit: cover;
       }
       .beautiful-bg {
         padding: 8px 2px 8px 2px;
@@ -180,7 +201,6 @@
     .profile-photo {
       width: 280px;
       height: 280px;
-      aspect-ratio: 1 / 1; /* Ensure it's always a circle */
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 6px 16px rgba(177, 139, 255, 0.4);
@@ -413,6 +433,13 @@
       const footer = document.getElementById('footer-home');
       if(footer) footer.style.display = id === 'home' ? 'block' : 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Close navbar in mobile view after navigation
+      const navbarCollapse = document.getElementById('navbarNav');
+      if (window.innerWidth <= 768 && navbarCollapse.classList.contains('show')) {
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+        bsCollapse.hide();
+      }
     }
     document.addEventListener('DOMContentLoaded', () => {
       showSection('home');
