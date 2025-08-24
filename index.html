@@ -14,6 +14,7 @@
       margin: 0;
       min-height: 100vh;
       overflow-x: hidden;
+      padding-top: 70px; /* Add space for fixed navbar */
     }
 
     /* Navbar */
@@ -21,8 +22,13 @@
       background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
       box-shadow: 0 2px 14px #9ba7b455;
       font-weight: 700;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
       border-radius: 0 0 18px 18px;
-      margin-bottom: 18px;
+      margin-bottom: 0;
     }
     .navbar-custom .nav-link,
     .navbar-custom .navbar-brand {

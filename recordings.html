@@ -14,11 +14,19 @@
       margin: 0;
       min-height: 100vh;
       padding: 20px 15px;
+      padding-top: 70px; /* Add space for fixed navbar */
     }
     .navbar-custom {
       background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
       box-shadow: 0 2px 14px #9ba7b455;
       font-weight: 700;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-radius: 0 0 18px 18px;
+      margin-bottom: 0;
     }
     .navbar-custom .nav-link,
     .navbar-custom .navbar-brand {
@@ -110,10 +118,21 @@
       color: #f7d488;
       transform: translateY(-2px);
     }
+    .page-header {
+      text-align: center;
+      margin: 30px 0;
+      font-weight: 900;
+      color: #6a4fff;
+    }
+    .page-footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #3b3a5f;
+      font-size: 1.05rem;
+    }
   </style>
 </head>
 <body>
-
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
@@ -145,7 +164,7 @@
   </nav>
 
   <header>
-    <h1 style="text-align:center; margin:30px 0; font-weight:900; color:#6a4fff;">Recordings Library</h1>
+    <h1 class="page-header">Recordings Library</h1>
   </header>
 
   <main class="container">
@@ -159,7 +178,39 @@
     </div>
   </main>
 
-  <footer style="text-align:center; margin-top:40px; color:#3b3a5f; font-size:1.05rem;">
+  <!-- Purchase Modal -->
+  <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="purchaseForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="purchaseModalLabel">Purchase Recording</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Recording</label>
+              <input type="text" class="form-control" id="recordingTitle" name="recording" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="customerNumber" class="form-label">Number</label>
+              <input type="tel" class="form-control" id="customerNumber" name="number" placeholder="Enter your phone number" required>
+            </div>
+            <div class="mb-3">
+              <label for="customerGmail" class="form-label">Gmail <span style="font-weight:normal;">(used for watching YouTube)</span></label>
+              <input type="email" class="form-control" id="customerGmail" name="gmail" placeholder="Enter your Gmail address" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
     &copy; 2025 Suman Arora. All rights reserved.
   </footer>
 
@@ -204,11 +255,30 @@
     }
 
     function purchase(item) {
-      alert(`Thank you for choosing to purchase: ${item}. Payment integration coming soon.`);
+      document.getElementById('recordingTitle').value = item;
+      const modal = new bootstrap.Modal(document.getElementById('purchaseModal'));
+      modal.show();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       renderRecordings(); // Initial render for 'reiki'
+    });
+
+    // Optional: Show a thank you message after form submit
+    document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Get form data
+      const recording = document.getElementById('recordingTitle').value;
+      const number = document.getElementById('customerNumber').value;
+      const gmail = document.getElementById('customerGmail').value;
+      // Show info (you can replace alert with console.log or send to your backend)
+      alert(
+        `Recording: ${recording}\nNumber: ${number}\nGmail: ${gmail}`
+      );
+      // Optionally, close the modal after submit
+      bootstrap.Modal.getInstance(document.getElementById('purchaseModal')).hide();
+      // Optionally, reset the form
+      this.reset();
     });
   </script>
 

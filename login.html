@@ -7,6 +7,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
+    .navbar-custom {
+      background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
+      box-shadow: 0 2px 14px #9ba7b455;
+      font-weight: 700;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-radius: 0 0 18px 18px;
+      margin-bottom: 0;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #e7f0fd 50%, #f3eafc 100%);
@@ -17,6 +29,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-top: 70px; /* Add space for fixed navbar */
     }
     .login-container {
       background: white;

@@ -14,8 +14,10 @@
       min-height: 100vh;
       padding: 40px 15px;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
+      padding-top: 70px; /* Add space for fixed navbar */
     }
     .contact-container {
       max-width: 600px;
@@ -55,24 +57,38 @@
       border-color: #6a4fff;
       box-shadow: 0 0 8px rgba(106, 79, 255, 0.6);
     }
-    button {
-      background: #b18aff;
-      color: #3b3a5f;
+    .btn {
       border: none;
       padding: 14px 38px;
       font-weight: 700;
       font-size: 1.15rem;
       border-radius: 15px;
       cursor: pointer;
-      box-shadow: 0 4px 14px #8863ff;
       transition: background 0.3s ease, color 0.2s ease, transform 0.2s ease;
       display: block;
       width: 100%;
     }
-    button:hover {
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn-submit {
+      background: #b18aff;
+      color: #3b3a5f;
+      box-shadow: 0 4px 14px #8863ff;
+    }
+    .btn-submit:hover {
       background: #3b3a5f;
       color: #f7d488;
-      transform: scale(1.05);
+    }
+    .btn-home {
+      background: #f7d488;
+      color: #3b3a5f;
+      box-shadow: 0 4px 14px #c2b06a;
+      margin-top: 15px;
+    }
+    .btn-home:hover {
+      background: #3b3a5f;
+      color: #f7d488;
     }
     .form-text {
       font-size: 0.875rem;
@@ -81,19 +97,24 @@
       margin-top: 15px;
       font-style: italic;
     }
+    /* Add navbar styles from course.html */
     .navbar-custom {
       background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
       box-shadow: 0 2px 14px #9ba7b455;
       font-weight: 700;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
       border-radius: 0 0 18px 18px;
-      margin-bottom: 18px;
+      margin-bottom: 0;
     }
     .navbar-custom .nav-link,
     .navbar-custom .navbar-brand {
       color: #3b3a5f !important;
       font-size: 1.13rem;
       letter-spacing: 1px;
-      transition: color 0.2s;
     }
     .navbar-custom .nav-link:hover,
     .navbar-custom .navbar-brand:hover {
@@ -102,13 +123,11 @@
     .navbar-toggler {
       border: none;
       background: #f7d488;
-      border-radius: 7px;
-      font-size: 1.5rem;
-      padding: 6px 14px;
     }
     .navbar-toggler:focus {
       box-shadow: none;
     }
+    /* Remove navbar styles */
   </style>
 </head>
 <body>
@@ -157,9 +176,10 @@
       <label for="message">Message / Inquiry</label>
       <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
 
-      <button type="submit">Send Message</button>
+      <button type="submit" class="btn btn-submit">Send Message</button>
     </form>
     <div class="form-text">We will get back to you shortly.</div>
+    <button type="button" class="btn btn-home" onclick="window.location.href='index.html'">Go to Home</button>
   </div>
 
   <script>
@@ -176,5 +196,6 @@
       }
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

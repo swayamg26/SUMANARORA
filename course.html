@@ -54,11 +54,14 @@
     }
     .course-img {
       width: 100%;
-      height: 180px;
+      max-width: 300px;
+      height: auto;
       border-radius: 15px;
-      object-fit: cover;
+      object-fit: contain; /* Show full image, no cut */
       margin-bottom: 18px;
       box-shadow: 0 4px 12px #b18aff88;
+      background: #fff;
+      display: block;
     }
     .course-title {
       font-size: 1.45rem;
@@ -159,6 +162,68 @@
     .navbar-toggler:focus {
       box-shadow: none;
     }
+    .page-header {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 900;
+      color: #6a4fff;
+    }
+    .page-footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #3b3a5f;
+      font-size: 1.05rem;
+    }
+    .search-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .search-box {
+      background: #f7d488;
+      color: #3b3a5f;
+      border: none;
+      border-radius: 15px;
+      padding: 12px 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 14px #c2b06a;
+      transition: background 0.3s, color 0.2s, transform 0.2s;
+      outline: none;
+      margin-right: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .search-box:focus {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px);
+    }
+    .apply-btn {
+      background: #b18aff;
+      color: #3b3a5f;
+      border: none;
+      border-radius: 15px;
+      padding: 12px 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 14px #8863ff;
+      transition: background 0.3s ease, color 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      margin-bottom: 10px;
+    }
+    .apply-btn:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px) scale(1.05);
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -193,9 +258,12 @@
   </nav>
 
   <header>
-    <h1 style="text-align:center; margin-bottom:30px; font-weight:900; color:#6a4fff;">Courses & Events</h1>
+    <h1 class="page-header">Courses & Events</h1>
   </header>
   <main>
+    <div class="search-container" id="searchContainer">
+      <input type="text" class="search-box" id="courseSearch" placeholder="Search courses..." oninput="filterCourses()" />
+    </div>
     <div class="courses-container" id="coursesList">
       <div class="course-card">
         <img src="rudraksh.jpg" alt="Live Rudraksha & Shivling Session" class="course-img" />
@@ -262,6 +330,7 @@
         <p><strong>Date & Time:</strong> 26th July 2025, 9:00 PM</p>
         <p><strong>Zoom Meeting ID:</strong> 811 7433 983</p>
         <p><strong>Password:</strong> 153953</p>
+        <button class="apply-btn" onclick="applyNow('Live Rudraksha & Shivling Session')">Apply Now</button>
         <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
 
@@ -272,6 +341,7 @@
         <p><strong>Schedule:</strong> Tuesday, 5th August 2025 from 9:00 PM to 10:00 PM</p>
         <p><strong>Contact:</strong> Suman Arora at 9115731550 for payments via GPay, PhonePe, or Paytm.</p>
         <p><strong>Energy Exchange:</strong> 3500</p>
+        <button class="apply-btn" onclick="applyNow('Vastu 7 Day Course')">Apply Now</button>
         <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
 
@@ -282,6 +352,7 @@
         <p><strong>Schedule:</strong> Sunday, 24th August 2025 at 9:00 PM</p>
         <p><strong>Speaker:</strong> Navin Sohan Gupta</p>
         <p><strong>Join us and discover the number that shapes your life!</strong></p>
+        <button class="apply-btn" onclick="applyNow('Predictive Numerology Workshop (2 Days)')">Apply Now</button>
         <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
 
@@ -291,6 +362,7 @@
         <p>Explore the healing energies of crystals with experts Suman Arora and Gurjeet Kaur.</p>
         <p><strong>Date & Time:</strong> 5th August 2025 at 3:30 PM</p>
         <p>This free webinar introduces crystal healing techniques and their benefits.</p>
+        <button class="apply-btn" onclick="applyNow('Crystal Healing Webinar')">Apply Now</button>
         <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
 
@@ -298,32 +370,48 @@
         <img src="raksha.jpg" alt="Suman Arora" class="course-detail-img" />
         <h2>Special Raksha Bandhan Message</h2>
         <p>Celebrate Raksha Bandhan with a special message from Suman Arora reminding us to cherish and strengthen sibling bonds with love, protection, and trust.</p>
+        <button class="apply-btn" onclick="applyNow('Special Raksha Bandhan Message')">Apply Now</button>
         <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
     </section>
   </main>
-  <footer style="text-align:center; margin-top:40px; color:#3b3a5f; font-size:1.05rem;">
+  <footer class="page-footer">
     &copy; 2025 Suman Arora. All rights reserved.
   </footer>
   <script>
     function showDetail(id) {
-      console.log('Showing detail for:', id);
       document.getElementById('coursesList').style.display = 'none';
+      document.getElementById('searchContainer').style.display = 'none';
       document.querySelectorAll('.course-detail').forEach(div => div.style.display = 'none');
       const detail = document.getElementById(id);
       if (detail) {
         detail.style.display = 'block';
-      } else {
-        console.warn('No detail section found for id:', id);
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function backToCourses() {
-      console.log('Back to courses clicked');
       document.getElementById('coursesList').style.display = 'grid';
+      document.getElementById('searchContainer').style.display = 'flex';
       document.querySelectorAll('.course-detail').forEach(div => div.style.display = 'none');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function filterCourses() {
+      const search = document.getElementById('courseSearch').value.toLowerCase();
+      document.querySelectorAll('#coursesList .course-card').forEach(card => {
+        const title = card.querySelector('.course-title').textContent.toLowerCase();
+        const desc = card.querySelector('.course-description').textContent.toLowerCase();
+        if (title.includes(search) || desc.includes(search)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function applyNow(courseName) {
+      alert('Thank you for applying for: ' + courseName + '. We will contact you soon!');
     }
   </script>
 <script 
