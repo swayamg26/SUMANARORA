@@ -16,128 +16,53 @@
       overflow-x: hidden;
     }
 
-    /* Sidebar */
-    .sidebar {
-      padding-top: 80px;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      width: 240px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
-      color: #3b3a5f;
-      box-shadow: 2px 0 14px #9ba7b455;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 2100;
-    }
-    .sidebar.open {
-      transform: translateX(0);
-    }
-    .sidebar-links {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar a {
-      display: block;
-      padding: 12px 20px;
-      color: #3b3a5f;
-      text-decoration: none;
-      font-size: 1.13rem;
-      border-radius: 7px;
-      transition: background 0.2s, color 0.14s;
-    }
-    .sidebar a:hover {
-      background: #f7d488;
-      color: #3b3a5f;
+    /* Navbar */
+    .navbar-custom {
+      background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
+      box-shadow: 0 2px 14px #9ba7b455;
       font-weight: 700;
+      border-radius: 0 0 18px 18px;
+      margin-bottom: 18px;
     }
-    .sidebar a:last-child {
-      margin-top: auto;
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+      color: #3b3a5f !important;
+      font-size: 1.13rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
     }
-
-    /* Sidebar Toggle */
-    .sidebar-toggle {
-      position: fixed;
-      top: 22px;
-      left: 16px;
-      background: #f7d488;
-      color: #3b3a5f;
-      font-size: 2rem;
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .navbar-brand:hover {
+      color: #b18aff !important;
+    }
+    .navbar-toggler {
       border: none;
+      background: #f7d488;
       border-radius: 7px;
-      padding: 4.5px 14px 2.5px 14px;
-      z-index: 2200;
-      cursor: pointer;
-      box-shadow: 0 2px 12px #9ba7b455;
-      transition: background 0.15s, color 0.15s;
+      font-size: 1.5rem;
+      padding: 6px 14px;
     }
-    .sidebar-toggle:hover {
-      background: #3b3a5f;
-      color: #f7d488;
+    .navbar-toggler:focus {
+      box-shadow: none;
     }
 
     /* Content */
     .content {
       padding: 28px 25px 0 25px;
-      margin-left: 240px;
+      margin-left: 0;
       transition: margin-left 0.3s ease;
     }
 
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 70vw;
-    max-width: 280px;
-    background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
-    box-shadow: 2px 0 14px rgba(0,0,0,0.3);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 3000;
-  }
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  .content {
-    margin-left: 0 !important;
-    padding: 15px;
-  }
-  .sidebar-toggle {
-    font-size: 2.5rem;
-    padding: 8px 18px;
-    z-index: 3100;
-  }
-  .profile-photo {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-  }
-  .beautiful-bg,
-  .text-content {
-    flex-direction: column;
-    padding: 0 10px;
-  }
-}
-
-
-    /* Section Styling */
-    section {
-      display: none;
-      margin-top: 0;
+    /* 3D Animation styles */
+    #threejs-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
-    section.active {
-      display: block;
-    }
-
-    /* Other styles remain as your current theme (profile photo, texts, buttons etc.) */
-
     .beautiful-bg {
       position: relative;
       min-height: 86vh;
@@ -155,6 +80,118 @@
       background-position: center center;
       background-repeat: no-repeat;
     }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .navbar-custom {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        max-width: none;
+        background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
+        box-shadow: 2px 0 14px rgba(0,0,0,0.3);
+        z-index: 3000;
+        padding-top: 60px;
+      }
+      .content {
+        margin-left: 0 !important;
+        padding: 10px;
+      }
+      .navbar-toggler {
+        font-size: 2.5rem;
+        padding: 8px 18px;
+        z-index: 3100;
+        top: 12px;
+        left: 12px;
+      }
+      .profile-photo {
+        width: 140px;
+        height: 140px;
+        max-width: 140px;
+        min-width: 100px;
+      }
+      .beautiful-bg {
+        flex-direction: column;
+        padding: 18px 8px 18px 8px;
+        min-height: unset;
+        gap: 18px;
+      }
+      .text-content {
+        padding: 0 2px;
+      }
+      .welcome-message {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+      }
+      .suman-arora-sign {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      .numerology-thoughts {
+        font-size: 0.98rem;
+        padding: 10px 8px;
+        margin-bottom: 18px;
+      }
+      .row-home-btns {
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .register-btn, .sign-in-btn {
+        font-size: 1rem;
+        padding: 12px 18px;
+        border-radius: 10px;
+      }
+      footer {
+        font-size: 0.95rem;
+        padding: 10px;
+        margin-top: 18px;
+        border-radius: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-photo {
+        width: 90px;
+        height: 90px;
+        max-width: 90px;
+      }
+      .beautiful-bg {
+        padding: 8px 2px 8px 2px;
+        gap: 10px;
+      }
+      .welcome-message {
+        font-size: 1rem;
+      }
+      .suman-arora-sign {
+        font-size: 1rem;
+      }
+      .numerology-thoughts {
+        font-size: 0.85rem;
+        padding: 6px 2px;
+      }
+      .register-btn, .sign-in-btn {
+        font-size: 0.95rem;
+        padding: 10px 10px;
+      }
+      footer {
+        font-size: 0.85rem;
+        padding: 6px;
+      }
+    }
+
+    /* Section Styling */
+    section {
+      display: none;
+      margin-top: 0;
+    }
+    section.active {
+      display: block;
+    }
+
+    /* Other styles remain as your current theme (profile photo, texts, buttons etc.) */
+
     .profile-photo {
       width: 280px;
       height: 280px;
@@ -264,49 +301,70 @@
       font-size: 1.07rem;
     }
   </style>
+  <!-- Add Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
   <link 
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
   rel="stylesheet" />
 
 </head>
 <body>
-  <div class="sidebar" id="sidebarMenu" aria-label="Sidebar navigation">
-    <a href="#" onclick="showSection('home');closeSidebar()" id="home-link">Home</a>
-    <div class="sidebar-links"style="margin-top: 0; padding-top: 0;">
-      <a href="course.html" onclick="showSection('courses');closeSidebar()">Courses</a>
-      <a href="contact.html" onclick="showSection('contact');closeSidebar()">Contact</a>
-      <a href="recordings.html" onclick="showSection('recordings');closeSidebar()">Recordings</a>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Suman Arora</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" onclick="showSection('home')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="course.html" onclick="showSection('courses')">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" onclick="showSection('contact')">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recordings.html" onclick="showSection('recordings')">Recordings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Log In</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <a href="login.html" onclick="closeSidebar()" style="margin-top:auto;">Log In</a>
-  </div>
-
-  <button class="sidebar-toggle" aria-label="Toggle sidebar" onclick="toggleSidebar()">
-    <i class="fas fa-bars"></i>
-  </button>
+  </nav>
 
   <div class="content container" id="mainContent">
-    <section id="home" class="active" tabindex="-1">
-      <div class="beautiful-bg">
-        <img src="1.jpg" alt="Suman Arora" class="profile-photo" />
-        <div class="text-content">
-          <div class="welcome-message">Welcome! Embrace the Journey of Self-Discovery</div>
-          <div class="suman-arora-sign">Suman Arora</div>
-          <div class="numerology-thoughts">
-            <b>“Astrology is a cosmic map showing your personality, potential, and purpose.”</b>
-
-            Life is full of stars and planetary rhythms. Through the wisdom of astrology, discover the unique keys to your happiness, prosperity, and spiritual growth.
-          </div>
-          <div class="row-home-btns">
-            <button class="register-btn" onclick="registerNow()">Register Now &amp; Get Notified</button>
-            <button class="sign-in-btn" onclick="signInModal()">Log In</button>
+    <header>
+      <section id="home" class="active" tabindex="-1">
+        <div class="beautiful-bg">
+          <!-- 3D Animation Canvas -->
+          <div id="threejs-animation"></div>
+          <img src="1.jpg" alt="Suman Arora" class="profile-photo" />
+          <div class="text-content">
+            <div class="welcome-message">Welcome! Embrace the Journey of Self-Discovery</div>
+            <div class="suman-arora-sign">Suman Arora</div>
+            <div class="numerology-thoughts">
+              <b>“Astrology is a cosmic map showing your personality, potential, and purpose.”</b>
+              Life is full of stars and planetary rhythms. Through the wisdom of astrology, discover the unique keys to your happiness, prosperity, and spiritual growth.
+            </div>
+            <div class="row-home-btns">
+              <button class="register-btn" onclick="window.location.href='course.html'">Explore Courses</button>
+            </div>
           </div>
         </div>
-      </div>
-      <footer id="footer-home">&copy; 2025 Suman Arora. All rights reserved.</footer>
-    </section>
-
-    <section id="courses" tabindex="-1"></section>
-    <section id="contact" tabindex="-1"></section>
+      </section>
+    </header>
+    <main>
+      <section id="courses" tabindex="-1"></section>
+      <section id="contact" tabindex="-1"></section>
+    </main>
+    <footer id="footer-home">&copy; 2025 Suman Arora. All rights reserved.</footer>
   </div>
 
   <!-- Login Modal -->
@@ -333,12 +391,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function toggleSidebar() {
-      document.getElementById('sidebarMenu').classList.toggle('open');
-    }
-    function closeSidebar() {
-      document.getElementById('sidebarMenu').classList.remove('open');
-    }
     function signInModal() {
       new bootstrap.Modal(document.getElementById('loginModal')).show();
     }
@@ -375,17 +427,70 @@
       const footer = document.getElementById('footer-home');
       if(footer) footer.style.display = id === 'home' ? 'block' : 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      closeSidebar();
     }
     document.addEventListener('DOMContentLoaded', () => {
       showSection('home');
-      closeSidebar();
     });
-    document.addEventListener('click', e => {
-      const sidebar = document.getElementById('sidebarMenu');
-      const toggle = document.querySelector('.sidebar-toggle');
-      if(sidebar.classList.contains('open') && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
-        closeSidebar();
+    // 3D Animation (Three.js)
+    document.addEventListener('DOMContentLoaded', () => {
+      // 3D animation setup
+      const container = document.getElementById('threejs-animation');
+      if (container) {
+        // Remove previous canvas if any
+        container.innerHTML = '';
+        // Set size
+        const width = container.offsetWidth || 600;
+        const height = container.offsetHeight || 400;
+
+        // Create scene, camera, renderer
+        const scene = new THREE.Scene();
+        scene.background = null;
+        const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+        camera.position.z = 3;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(width, height);
+        renderer.setClearColor(0x000000, 0); // transparent
+        container.appendChild(renderer.domElement);
+
+        // Add a rotating 3D sphere with glowing effect
+        const geometry = new THREE.SphereGeometry(0.9, 32, 32);
+        const material = new THREE.MeshPhongMaterial({
+          color: 0xb18aff,
+          shininess: 80,
+          emissive: 0xf7d488,
+          emissiveIntensity: 0.3,
+          transparent: true,
+          opacity: 0.7
+        });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Add lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0xf7d488, 1, 100);
+        pointLight.position.set(2, 2, 3);
+        scene.add(pointLight);
+
+        // Responsive resize
+        function resizeRenderer() {
+          const w = container.offsetWidth;
+          const h = container.offsetHeight;
+          renderer.setSize(w, h);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', resizeRenderer);
+
+        // Animation loop
+        function animate() {
+          requestAnimationFrame(animate);
+          sphere.rotation.y += 0.008;
+          sphere.rotation.x += 0.003;
+          renderer.render(scene, camera);
+        }
+        animate();
       }
     });
   </script>
