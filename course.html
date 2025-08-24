@@ -79,6 +79,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-top: auto;
     }
     .knowmore-btn, .back-btn {
       background: #b18aff;
@@ -117,6 +118,14 @@
       font-family: Georgia, serif;
       color: #3b3a5f;
     }
+    .course-detail-img {
+      display: block;
+      margin: 0 auto 20px auto;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 15px;
+    }
     .course-detail h2 {
       color: #6a4fff;
       font-weight: 900;
@@ -128,117 +137,174 @@
       margin-bottom: 18px;
       line-height: 1.5;
     }
+    .navbar-custom {
+      background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
+      box-shadow: 0 2px 14px #9ba7b455;
+      font-weight: 700;
+    }
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+      color: #3b3a5f !important;
+      font-size: 1.13rem;
+      letter-spacing: 1px;
+    }
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .navbar-brand:hover {
+      color: #b18aff !important;
+    }
+    .navbar-toggler {
+      border: none;
+      background: #f7d488;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
   </style>
 </head>
 <body>
-
-  <div class="courses-container" id="coursesList">
-    <div class="course-card">
-      <img src="rudraksh.jpg" alt="Live Rudraksha & Shivling Session" class="course-img" />
-      <div class="course-title">Live Rudraksha & Shivling Session</div>
-      <div class="course-description">
-        Why offer water on Shivling? Which Rudraksha to use in Sawan? Free live Zoom session on 26th July 2025 at 9 PM.
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Suman Arora</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="course.html">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recordings.html">Recordings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Log In</a>
+          </li>
+        </ul>
       </div>
-      <div class="btn-container">
-        <button class="knowmore-btn" onclick="showDetail('rudraksha')">Know More</button>
+    </div>
+  </nav>
+
+  <header>
+    <h1 style="text-align:center; margin-bottom:30px; font-weight:900; color:#6a4fff;">Courses & Events</h1>
+  </header>
+  <main>
+    <div class="courses-container" id="coursesList">
+      <div class="course-card">
+        <img src="rudraksh.jpg" alt="Live Rudraksha & Shivling Session" class="course-img" />
+        <div class="course-title">Live Rudraksha & Shivling Session</div>
+        <div class="course-description">
+          Why offer water on Shivling? Which Rudraksha to use in Sawan? Free live Zoom session on 26th July 2025 at 9 PM.
+        </div>
+        <div class="btn-container">
+          <button class="knowmore-btn" onclick="showDetail('rudraksha')">Know More</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="vastu.jpg" alt="Vastu 7 Day Course" class="course-img" />
+        <div class="course-title">Vastu 7 Day Course</div>
+        <div class="course-description">
+          Enhance your life with Vastu principles in this 7-day course starting 5th August 2025 at 9 PM.
+        </div>
+        <div class="btn-container">
+          <button class="knowmore-btn" onclick="showDetail('vastu')">Know More</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="4.jpg" alt="Free numerology coonsultation" class="course-img" />
+        <div class="course-title">Free numerology coonsultation</div>
+        <div class="course-description">
+          Change your life with power of numbers,join free consultation
+        </div>
+        <div class="btn-container">
+          <button class="knowmore-btn" onclick="showDetail('numerology')">Know More</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="crystal.jpg" alt="Crystal Healing Webinar" class="course-img" />
+        <div class="course-title">Crystal Healing Webinar</div>
+        <div class="course-description">
+          Discover the healing power of crystals in this free webinar on 5th August 2025 at 3:30 PM.
+        </div>
+        <div class="btn-container">
+          <button class="knowmore-btn" onclick="showDetail('crystal')">Know More</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="raksha.jpg" alt="Special Raksha Bandhan Message" class="course-img" />
+        <div class="course-title">Special Raksha Bandhan Message</div>
+        <div class="course-description">
+          A heartfelt message celebrating the bond of siblings on Raksha Bandhan.
+        </div>
+        <div class="btn-container">
+          <button class="knowmore-btn" onclick="showDetail('raksha')">Know More</button>
+        </div>
       </div>
     </div>
 
-    <div class="course-card">
-      <img src="vastu.jpg" alt="Vastu 7 Day Course" class="course-img" />
-      <div class="course-title">Vastu 7 Day Course</div>
-      <div class="course-description">
-        Enhance your life with Vastu principles in this 7-day course starting 5th August 2025 at 9 PM.
+    <!-- Course Details -->
+    <section>
+      <div class="course-detail" id="rudraksha">
+        <img src="rudraksh.jpg" alt="Suman Arora" class="course-detail-img" />
+        <h2>Live Rudraksha & Shivling Session</h2>
+        <p>Join a free live Zoom session hosted by <strong>Suman Arora</strong> where you will learn why devotees offer water on Shivling and which Rudraksha to use in the month of Sawan.</p>
+        <p><strong>Date & Time:</strong> 26th July 2025, 9:00 PM</p>
+        <p><strong>Zoom Meeting ID:</strong> 811 7433 983</p>
+        <p><strong>Password:</strong> 153953</p>
+        <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
-      <div class="btn-container"style="margin-top: 35px;">
-        <button class="knowmore-btn" onclick="showDetail('vastu')">Know More</button>
+
+      <div class="course-detail" id="vastu">
+        <img src="vastu.jpg" alt="Suman Arora" class="course-detail-img" />
+        <h2>Vastu 7 Day Course</h2>
+        <p>This 7-day comprehensive course teaches the principles of Vastu Shastra to improve your home and life energy.</p>
+        <p><strong>Schedule:</strong> Tuesday, 5th August 2025 from 9:00 PM to 10:00 PM</p>
+        <p><strong>Contact:</strong> Suman Arora at 9115731550 for payments via GPay, PhonePe, or Paytm.</p>
+        <p><strong>Energy Exchange:</strong> 3500</p>
+        <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
-    </div>
 
-    <div class="course-card">
-      <img src="ing.jpg" alt="Free numerology coonsultation" class="course-img" />
-      <div class="course-title">Free numerology coonsultation</div>
-      <div class="course-description">
-        Change your life with power of numbers,join free consultation
+      <div class="course-detail" id="numerology">
+        <img src="ing.jpg" alt="Predictive Numerology Workshop" class="course-detail-img" />
+        <h2>Predictive Numerology Workshop (2 Days)</h2>
+        <p>Unlock the secrets of numbers and discover how they shape your life. This free, two-day predictive numerology course explores:</p>
+        <p><strong>Schedule:</strong> Sunday, 24th August 2025 at 9:00 PM</p>
+        <p><strong>Speaker:</strong> Navin Sohan Gupta</p>
+        <p><strong>Join us and discover the number that shapes your life!</strong></p>
+        <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
-      <div class="btn-container"style="margin-top: 1px;">
-        <button class="knowmore-btn" onclick="showDetail('numerology')">Know More</button>
+
+      <div class="course-detail" id="crystal">
+        <img src="crystal.jpg" alt="Suman Arora" class="course-detail-img" />
+        <h2>Crystal Healing Webinar</h2>
+        <p>Explore the healing energies of crystals with experts Suman Arora and Gurjeet Kaur.</p>
+        <p><strong>Date & Time:</strong> 5th August 2025 at 3:30 PM</p>
+        <p>This free webinar introduces crystal healing techniques and their benefits.</p>
+        <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
-    </div>
 
-    <div class="course-card">
-      <img src="crystal.jpg" alt="Crystal Healing Webinar" class="course-img" />
-      <div class="course-title">Crystal Healing Webinar</div>
-      <div class="course-description">
-        Discover the healing power of crystals in this free webinar on 5th August 2025 at 3:30 PM.
+      <div class="course-detail" id="raksha">
+        <img src="raksha.jpg" alt="Suman Arora" class="course-detail-img" />
+        <h2>Special Raksha Bandhan Message</h2>
+        <p>Celebrate Raksha Bandhan with a special message from Suman Arora reminding us to cherish and strengthen sibling bonds with love, protection, and trust.</p>
+        <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
       </div>
-      <div class="btn-container">
-        <button class="knowmore-btn" onclick="showDetail('crystal')">Know More</button>
-      </div>
-    </div>
-
-    <div class="course-card">
-      <img src="raksha.jpg" alt="Special Raksha Bandhan Message" class="course-img" />
-      <div class="course-title">Special Raksha Bandhan Message</div>
-      <div class="course-description">
-        A heartfelt message celebrating the bond of siblings on Raksha Bandhan.
-      </div>
-      <div class="btn-container">
-        <button class="knowmore-btn" onclick="showDetail('raksha')">Know More</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Course Details -->
-  <div class="course-detail" id="rudraksha">
-    <img src="rudraksh.jpg" alt="Suman Arora" style="display: block; margin: 0 auto; width: 300px; height: 350px;" />
-    <h2 style="margin-top: 0;">Live Rudraksha & Shivling Session</h2>
-    <p>Join a free live Zoom session hosted by <strong>Suman Arora</strong> where you will learn why devotees offer water on Shivling and which Rudraksha to use in the month of Sawan.</p>
-    <p><strong>Date & Time:</strong> 26th July 2025, 9:00 PM</p>
-    <p><strong>Zoom Meeting ID:</strong> 811 7433 983</p>
-    <p><strong>Password:</strong> 153953</p>
-    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
-  </div>
-
- 
-
-
-  <div class="course-detail" id="vastu">
-    <img src="vastu.jpg" alt="Suman Arora" style="display: block; margin: 0 auto; width: 300px; height: 350px;" />
-    <h2>Vastu 7 Day Course</h2>
-    <p>This 7-day comprehensive course teaches the principles of Vastu Shastra to improve your home and life energy.</p>
-    <p><strong>Schedule:</strong> Tuesday, 5th August 2025 from 9:00 PM to 10:00 PM</p>
-    <p><strong>Contact:</strong> Suman Arora at 9115731550 for payments via GPay, PhonePe, or Paytm.</p>
-    <p><strong>Energy Exchange:</strong> 3500</p>
-    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
-  </div>
-
-  <div class="course-detail" id="numerology">
-    <img src="ing.jpg" alt="Predictive Numerology Workshop" style="display: block; margin: 0 auto; width: 300px; height: 350px;" />
-    <h2>Predictive Numerology Workshop (2 Days)</h2>
-    <p>Unlock the secrets of numbers and discover how they shape your life. This free, two-day predictive numerology course explores:</p>
-    <p><strong>Schedule:</strong> Sunday, 24th August 2025 at 9:00 PM</p>
-    <p><strong>Speaker:</strong> Navin Sohan Gupta</p>
-    <p><strong>Join us and discover the number that shapes your life!</strong></p>
-    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
-  </div>
-
-  <div class="course-detail" id="crystal">
-    <img src="crystal.jpg" alt="Suman Arora" style="display: block; margin: 0 auto; width: 300px; height: 350px;" />
-    <h2>Crystal Healing Webinar</h2>
-    <p>Explore the healing energies of crystals with experts Suman Arora and Gurjeet Kaur.</p>
-    <p><strong>Date & Time:</strong> 5th August 2025 at 3:30 PM</p>
-    <p>This free webinar introduces crystal healing techniques and their benefits.</p>
-    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
-  </div>
-
-  <div class="course-detail" id="raksha">
-    <img src="raksha.jpg" alt="Suman Arora" style="display: block; margin: 0 auto; width: 300px; height: 350px;" />
-    <h2>Special Raksha Bandhan Message</h2>
-    <p>Celebrate Raksha Bandhan with a special message from Suman Arora reminding us to cherish and strengthen sibling bonds with love, protection, and trust.</p>
-    <button class="back-btn" onclick="backToCourses()">Back to Courses</button>
-  </div>
-
+    </section>
+  </main>
+  <footer style="text-align:center; margin-top:40px; color:#3b3a5f; font-size:1.05rem;">
+    &copy; 2025 Suman Arora. All rights reserved.
+  </footer>
   <script>
     function showDetail(id) {
       console.log('Showing detail for:', id);
