@@ -5,143 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Recordings - Suman Arora</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     body {
-      display: flex;
-      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e7f0fd 50%, #f3eafc 100%);
+      color: #3b3a5f;
       margin: 0;
+      min-height: 100vh;
+      padding: 20px 15px;
     }
-    .sidebar {
-      width: 220px;
-      background: linear-gradient(180deg, #a3cdfd, #d9bbfc 95%);
-      padding: 20px;
-      box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    .navbar-custom {
+      background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
+      box-shadow: 0 2px 14px #9ba7b455;
+      font-weight: 700;
     }
-    .sidebar a {
-      display: block;
-      color: #3b3a5f;
-      padding: 10px 15px;
+    .navbar-custom .nav-link,
+    .navbar-custom .navbar-brand {
+      color: #3b3a5f !important;
+      font-size: 1.13rem;
+      letter-spacing: 1px;
+    }
+    .navbar-custom .nav-link:hover,
+    .navbar-custom .navbar-brand:hover {
+      color: #b18aff !important;
+    }
+    .navbar-toggler {
+      border: none;
+      background: #f7d488;
+    }
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    .recordings-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .recording-card {
+      background: rgba(235, 230, 255, 0.85);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px #b18aff55;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .recording-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 28px #8863ffbb;
+    }
+    .recording-title {
+      font-size: 1.35rem;
+      font-weight: 800;
       margin-bottom: 10px;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
+      color: #6a4fff;
     }
-    .sidebar a.active, .sidebar a:hover {
-      background-color: #f7d488;
-      color: #3b3a5f;
-    }
-    .content {
-      flex-grow: 1;
-      padding: 30px;
-      background: #fff;
-    }
-    h2 {
+    .recording-description {
+      font-size: 1.05rem;
+      font-family: Georgia, serif;
       margin-bottom: 20px;
-    }
-    .recording-item {
-      margin-bottom: 15px;
-      padding: 12px;
-      box-shadow: 0 2px 10px #f0f0f070;
-      border-radius: 8px;
+      color: #3b3a5f;
+      flex-grow: 1;
     }
     .btn-purchase {
-      background-color: #f7d488;
+      background: #b18aff;
+      color: #3b3a5f;
       border: none;
-      padding: 6px 14px;
-      font-weight: 600;
-      border-radius: 6px;
+      border-radius: 15px;
+      padding: 10px 25px;
+      font-weight: 700;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
+      box-shadow: 0 2px 14px #8863ff;
+      transition: background 0.3s ease, color 0.2s ease, transform 0.2s ease;
+      text-decoration: none;
     }
     .btn-purchase:hover {
-      background-color: #d4b75b;
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px);
+    }
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .filter-btn {
+      background: #f7d488;
+      color: #3b3a5f;
+      border: none;
+      border-radius: 15px;
+      padding: 12px 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin: 0 10px;
+      box-shadow: 0 2px 14px #c2b06a;
+      transition: background 0.3s, color 0.2s, transform 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
 
-  <nav class="sidebar">
-    <a id="link-reiki" class="active" onclick="showSection('reiki')">Reiki Recordings</a>
-    <a id="link-vastu" onclick="showSection('vastu')">Vastu Recordings</a>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Suman Arora</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="course.html">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="recordings.html">Recordings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <main class="content">
-    <section id="reiki">
-      <h2>Reiki Recordings</h2>
-      <!-- Reiki Level Day 1 to Day 16 -->
-      <div class="recording-item">
-        <h4>Reiki Level Day 1</h4>
-        <p>Introduction and basic techniques for day 1.</p>
-        <button class="btn-purchase" onclick="purchase('Reiki Level Day 1')">Buy Now </button>
-      </div>
-      <div class="recording-item">
-        <h4>Reiki Level Day 2</h4>
-        <p>Practice and meditation for day 2.</p>
-        <button class="btn-purchase" onclick="purchase('Reiki Level Day 2')">Buy Now </button>
-      </div>
-      <!-- Repeat for days 3 through 16 -->
-      <script>
-        for(let i=3; i<=16; i++) {
-          document.write(`
-            <div class="recording-item">
-              <h4>Reiki Level Day ${i}</h4>
-              <p>Guided session for Reiki Level Day ${i}.</p>
-              <button class="btn-purchase" onclick="purchase('Reiki Level Day ${i}')">Buy Now </button>
-            </div>
-          `);
-        }
-      </script>
-    </section>
+  <header>
+    <h1 style="text-align:center; margin:30px 0; font-weight:900; color:#6a4fff;">Recordings Library</h1>
+  </header>
 
-    <section id="vastu" style="display:none;">
-      <h2>Vastu Recordings</h2>
-      <!-- Vastu 1 to Vastu 6 -->
-      <div class="recording-item">
-        <h4>Vastu 1</h4>
-        <p>Basics of Vastu principles - session 1.</p>
-        <button class="btn-purchase" onclick="purchase('Vastu 1')">Buy Now</button>
-      </div>
-      <div class="recording-item">
-        <h4>Vastu 2</h4>
-        <p>Vastu tips for living room - session 2.</p>
-        <button class="btn-purchase" onclick="purchase('Vastu 2')">Buy Now </button>
-      </div>
-      <div class="recording-item">
-        <h4>Vastu 3</h4>
-        <p>Guidance on bedroom arrangement - session 3.</p>
-        <button class="btn-purchase" onclick="purchase('Vastu 3')">Buy Now </button>
-      </div>
-      <div class="recording-item">
-        <h4>Vastu 4</h4>
-        <p>Kitchen and energy flow in Vastu - session 4.</p>
-        <button class="btn-purchase" onclick="purchase('Vastu 4')">Buy Now </button>
-      </div>
-      <div class="recording-item">
-        <h4>Vastu 5</h4>
-        <p>Exterior Vastu guidelines - session 5.</p>
-        <button class="btn-purchase" onclick="purchase('Vastu 5')">Buy Now </button>
-      </div>
-      <div class="recording-item">
-        <h4>Vastu 6</h4>
-        <p>Advanced Vastu corrections - session 6.</p>
-        <button class="btn-purchase" onclick="purchase('Vastu 6')">Buy Now </button>
-      </div>
-    </section>
+  <main class="container">
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterRecordings('reiki')">Reiki</button>
+      <button class="filter-btn" onclick="filterRecordings('vastu')">Vastu</button>
+    </div>
+
+    <div class="recordings-container" id="recordingsList">
+      <!-- Recordings will be populated by JS -->
+    </div>
   </main>
 
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('main section').forEach(s => s.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
+  <footer style="text-align:center; margin-top:40px; color:#3b3a5f; font-size:1.05rem;">
+    &copy; 2025 Suman Arora. All rights reserved.
+  </footer>
 
-      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-      document.getElementById('link-' + id).classList.add('active');
+  <script>
+    const recordings = [
+      // Reiki Recordings
+      ...Array.from({ length: 16 }, (_, i) => ({
+        category: 'reiki',
+        title: `Reiki Level Day ${i + 1}`,
+        description: `Guided session for Reiki Level Day ${i + 1}.`
+      })),
+      // Vastu Recordings
+      { category: 'vastu', title: 'Vastu 1', description: 'Basics of Vastu principles - session 1.' },
+      { category: 'vastu', title: 'Vastu 2', description: 'Vastu tips for living room - session 2.' },
+      { category: 'vastu', title: 'Vastu 3', description: 'Guidance on bedroom arrangement - session 3.' },
+      { category: 'vastu', title: 'Vastu 4', description: 'Kitchen and energy flow in Vastu - session 4.' },
+      { category: 'vastu', title: 'Vastu 5', description: 'Exterior Vastu guidelines - session 5.' },
+      { category: 'vastu', title: 'Vastu 6', description: 'Advanced Vastu corrections - session 6.' }
+    ];
+
+    function renderRecordings(filter = 'reiki') {
+      const container = document.getElementById('recordingsList');
+      container.innerHTML = '';
+      recordings
+        .filter(rec => rec.category === filter)
+        .forEach(rec => {
+          const card = document.createElement('div');
+          card.className = 'recording-card';
+          card.innerHTML = `
+            <div class="recording-title">${rec.title}</div>
+            <div class="recording-description">${rec.description}</div>
+            <button class="btn-purchase" onclick="purchase('${rec.title}')">Buy Now</button>
+          `;
+          container.appendChild(card);
+        });
+    }
+
+    function filterRecordings(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.filter-btn[onclick="filterRecordings('${category}')"]`).classList.add('active');
+      renderRecordings(category);
     }
 
     function purchase(item) {
       alert(`Thank you for choosing to purchase: ${item}. Payment integration coming soon.`);
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderRecordings(); // Initial render for 'reiki'
+    });
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
