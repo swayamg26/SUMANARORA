@@ -4,28 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e7f0fd 50%, #f3eafc 100%);
+      color: #3b3a5f;
       margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .login-container {
       background: white;
       padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      border-radius: 18px;
+      box-shadow: 0 8px 44px #b1bce8cc;
       width: 100%;
       max-width: 400px;
+      margin-top: 40px;
+      margin-bottom: 20px;
     }
     .login-container h2 {
       margin-bottom: 20px;
-      color: #333;
+      color: #6a4fff;
       text-align: center;
+      font-weight: 900;
     }
     .login-container label {
       display: block;
@@ -36,26 +43,50 @@
     .login-container input[type="email"],
     .login-container input[type="password"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px 15px;
       margin-bottom: 18px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
+      border: 2px solid #b18aff;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #3b3a5f;
+      font-family: 'Segoe UI', sans-serif;
+      transition: border-color 0.3s ease;
       box-sizing: border-box;
+    }
+    .login-container input:focus {
+      outline: none;
+      border-color: #6a4fff;
+      box-shadow: 0 0 8px rgba(106, 79, 255, 0.6);
     }
     .login-container button {
       width: 100%;
-      background: #007bff;
-      color: white;
-      font-size: 18px;
-      padding: 12px;
+      font-size: 1.13rem;
+      font-weight: 700;
+      padding: 14px 0;
       border: none;
-      border-radius: 5px;
+      border-radius: 15px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 2px 14px #8863ff;
+      transition: background 0.3s, color 0.2s, transform 0.2s;
+      margin-bottom: 10px;
     }
-    .login-container button:hover {
-      background: #0056b3;
+    .login-btn {
+      background: #b18aff;
+      color: #3b3a5f;
+    }
+    .login-btn:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .back-btn {
+      background: #f7d488;
+      color: #3b3a5f;
+    }
+    .back-btn:hover {
+      background: #3b3a5f;
+      color: #f7d488;
+      transform: translateY(-2px) scale(1.04);
     }
     .login-container .form-footer {
       margin-top: 15px;
@@ -70,9 +101,63 @@
     .login-container .form-footer a:hover {
       text-decoration: underline;
     }
+    .ad-banner {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto 18px auto;
+      padding: 18px 20px;
+      background: linear-gradient(90deg, #a3cdfd 75%, #f7d488 120%);
+      color: #3b3a5f;
+      border-radius: 15px;
+      box-shadow: 0 2px 14px #b18aff55;
+      text-align: center;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 600px) {
+      .login-container, .ad-banner {
+        max-width: 98vw;
+        padding: 12px 6px;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Suman Arora</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="course.html">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recordings.html">Recordings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="login.html">Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Ad Banner -->
+  <div class="ad-banner">
+    🌟 <b>Special Offer:</b> Register for any course and get a free numerology consultation! <a href="course.html" style="color:#6a4fff;text-decoration:underline;">Explore Courses</a>
+  </div>
 
   <div class="login-container">
     <h2>Log In</h2>
@@ -83,17 +168,16 @@
       <label for="password">Password</label>
       <input type="password" id="password" placeholder="Enter your password" required />
 
-      <button type="submit">Log In</button>
+      <button type="submit" class="login-btn">Log In</button>
+      <button type="button" class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
     </form>
     <div class="form-footer">
       <a href="#">Forgot password?</a>
     </div>
   </div>
 
-    <script 
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-    </script>
-
-
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+  </script>
 </body>
 </html>
